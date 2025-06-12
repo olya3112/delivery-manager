@@ -16,4 +16,6 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
                 .orElseThrow(() ->new ManagerInternalException(ErrorMessageCode.DATA_NOT_FOUND.getCode(),
                         String.format("User with login %s not found!", login)));
     }
+
+    boolean existsByIntegrationId(String integrationId);
 }

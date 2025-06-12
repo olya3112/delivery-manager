@@ -1,35 +1,35 @@
 package org.example.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.entiti.Users;
+import org.example.exeption.userException.UserAlreadyExistsException;
 import org.example.service.UsersService;
 import org.springframework.web.bind.annotation.*;
+import org.example.exeption.userException.UserNotFoundException;
 
-//import jakarta.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-@Api(tags = {"Методы для получения информации о пользователе"})
+@Tag(name = "UserController", description = "Контроллер по работе с пользователями")
 @RequestMapping(value = "/manager")
 public class UserController {
     public static final String USERS = "/users";
-    public static final String CREATE_USERS = "/users";
-    public static final String UPDATE_USERS = "/users";
-
     private final UsersService usersService;
 
     @GetMapping(USERS)
-    @ApiOperation(value = "Метод создания пользователя")
     public Users getUsers(@RequestParam("login") @Valid String login){
-        return usersService.getUserByLogin(login);
+        return usersService.getUserByLogin(login)
+                .orElseThrow(() -> new UserNotFoundException("user with " + login + " not found."));
     }
 
     @PostMapping(USERS)
-    @ApiOperation(value = "Метод создания пользователя")
-    public Users createUser(@RequestBody @Valid Users user) {
+    public Users createUser(@Valid @RequestBody Users user) {
+        if (usersService.getUserByLogin(user.getLogin()).isPresent()){
+            throw new UserAlreadyExistsException("User with login " + user.getLogin() + " already exists.");
+        }
         return usersService.registerUser(user);
     }
 
