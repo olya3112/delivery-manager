@@ -1,7 +1,7 @@
 package org.example.service;
 
 import jakarta.transaction.Transactional;
-import org.example.entiti.Users;
+import org.example.entity.Users;
 import org.example.repository.UsersRepository;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +39,7 @@ public class UsersService {
         return datePart + randomPart.toString();
     }
 
-    
+
     // Не очень эффективный, надо почитать про айдишники
     @Transactional
     public Users registerUser(Users user) {

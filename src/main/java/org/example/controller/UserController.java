@@ -4,11 +4,11 @@ package org.example.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.entiti.Users;
-import org.example.exeption.userException.UserAlreadyExistsException;
+import org.example.entity.Users;
+import org.example.exeption.entity.userException.UserAlreadyExistsException;
 import org.example.service.UsersService;
 import org.springframework.web.bind.annotation.*;
-import org.example.exeption.userException.UserNotFoundException;
+import org.example.exeption.entity.userException.UserNotFoundException;
 
 
 @RestController

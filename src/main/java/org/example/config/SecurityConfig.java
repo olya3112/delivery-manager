@@ -24,6 +24,7 @@ public class SecurityConfig {
                ignoring().requestMatchers(
                 "/swagger-ui.html",
                 "/*",
+                "/opportunity/*",
                 "/manager/users",
                 "/swagger-ui/**",
                 "/v3/api-docs/**"

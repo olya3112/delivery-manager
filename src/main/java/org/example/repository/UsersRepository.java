@@ -1,6 +1,6 @@
 package org.example.repository;
 
-import org.example.entiti.Users;
+import org.example.entity.Users;
 import org.example.exeption.ManagerInternalException;
 import org.example.exeption.enums.ErrorMessageCode;
 import org.springframework.data.jpa.repository.JpaRepository;

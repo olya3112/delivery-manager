@@ -1,8 +1,9 @@
-package org.example.exeption;
+package org.example.exeption.controller;
 
+import org.example.exeption.ErrorResponse;
 import org.example.exeption.enums.ErrorMessageCode;
-import org.example.exeption.userException.UserAlreadyExistsException;
-import org.example.exeption.userException.UserNotFoundException;
+import org.example.exeption.entity.userException.UserAlreadyExistsException;
+import org.example.exeption.entity.userException.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
